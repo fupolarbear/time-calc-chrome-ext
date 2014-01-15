@@ -4,14 +4,14 @@ var rand = 5000;
 	//console.log("sleep: " + rand);
 	var hehe = function() {
 			chrome.runtime.sendMessage(
-				{ greeting: "hello", url: document.domain },
+				{ greeting: "hello", url: location.hostname },
 				function(response) {
-					//console.log('meow', response);
 					if(response.farewell){
 						rand = 5000;
 					} else {
-						rand = 5000;
+						rand = 8000;
 					}
+					console.log('meow', response, ' rand', rand);
 				}
 			);
 			loop();

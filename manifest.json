@@ -3,7 +3,7 @@
 
   "name": "Life Is Short",
   "description": "Calculate how much time you waste in web pages. by pb.",
-  "version": "1.8",
+  "version": "2.0",
 
   "background" : {
     "scripts": ["background.js"]
