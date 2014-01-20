@@ -39,17 +39,18 @@ chrome.runtime.onMessage.addListener(
 			);// end query
 			*/
 			myurl = request.url?request.url:"unknown";
+			time = request.time?request.time/1000.0:0;
 			if(sender.tab && sender.tab.highlighted){
 				chrome.storage.local.get('table', function(item){
 					if(item.table){
 						if(item.table[myurl])
-							item.table[myurl] += 5;
+							item.table[myurl] += time;
 						else
-							item.table[myurl] = 5;
+							item.table[myurl] = time;
 						chrome.storage.local.set({'table': item.table});
 					} else {
 						var tb = {};
-						tb[myurl] = 5;
+						tb[myurl] = time;
 						chrome.storage.local.set({'table': tb});
 					}
 					//chrome.storage.local.get('table', function(item){console.log(item.table);});
@@ -71,7 +72,7 @@ chrome.runtime.onMessage.addListener(
 				*/
 		}
 		if(succ)
-			sendResponse({farewell: "success add 5"});
+			sendResponse({farewell: "success add"});
 		else
 			sendResponse({farewell: ""});
 	}
